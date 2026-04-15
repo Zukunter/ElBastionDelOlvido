@@ -1,0 +1,30 @@
+[main]
+# Ajustamos el tamaño de la fuente para que las letras sean grandes
+font=FiraCode Nerd Font SemBd:weight=bold:size=20
+prompt="   "
+# Ajustamos el tamaño de los iconos
+icon-theme=hicolor
+icons-enabled=yes
+# Aumentamos el tamaño general de la ventana
+width=50
+line-height=30
+fields=name,generic,comment
+# Espaciado interno para que no se vea apretado
+inner-pad=20
+[colors]
+# Fondo: 187A77 con transparencia (el 'cc' al final es ~80% opacidad)
+prompt=D02F64ff
+background=091819cc
+# El nombre de las apps: D1902E
+text=D1902Eff
+# Lo que escribes (input): D02F64
+input=D02F64ff
+# Color de la selección (puedes ajustarlo si quieres resaltar el texto seleccionado)
+selection=D1902E33
+selection-text=D1902Eff
+# Color de los bordes (puedes ponerlo igual al fondo para que sea invisible)
+border=187A77cc
+
+[border]
+width=3
+radius=15
