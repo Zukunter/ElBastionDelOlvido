@@ -1,0 +1,72 @@
+#!/bin/zsh
+#function t_setup {
+  emulate -L zsh
+  setopt local_options extended_glob glob_dots
+
+  0=${(%):-%x}
+  export T_PRJDIR="${0:A:h:h:h}"
+  export T_TESTDATA=$T_PRJDIR/tests/testdata
+  local testdir="$T_PRJDIR/tests"
+
+  # Generate fixtures if needed. Use a container-local path so container
+  # fixtures never bleed onto the host mount (or vice versa).
+  local fixture_dir="$testdir/fixtures"
+  local fixture_git_ver="$fixture_dir/.git_version"
+  if [[ ! -d $fixture_dir/bare ]] || \
+     [[ ! -f $fixture_git_ver ]] || \
+     [[ "$(cat $fixture_git_ver)" != "$(git --version)" ]]; then
+    fixture_dir="/tmp/antidote-fixtures"
+    fixture_git_ver="$fixture_dir/.git_version"
+    if [[ ! -d $fixture_dir/bare ]] || \
+       [[ ! -f $fixture_git_ver ]] || \
+       [[ "$(cat $fixture_git_ver)" != "$(git --version)" ]]; then
+      rm -rf "$fixture_dir"
+      FIXTURE_DIR="$fixture_dir" zsh $testdir/bin/init_fixtures.zsh &>/dev/null
+    fi
+  fi
+
+  # save path/fpath
+  typeset -ga T_PREV_PATH=( $path )
+  typeset -ga T_PREV_FPATH=( $fpath )
+
+  # save zstyles, and clear them all for the test session
+  typeset -ga T_PREV_ZSTYLES=( ${(@f)"$(zstyle -L ':antidote:*')"} )
+  source <(zstyle -L ':antidote:*' | awk '!/:antidote:test:/{print "zstyle -d",$2}')
+
+  # setup test functions
+  fpath+=( $testdir/functions )
+  autoload -Uz $testdir/functions/*
+
+  # gitconfig insteadOf rules handle URL rewriting for fake URLs
+
+  # works with BSD and GNU gmktemp
+  T_TEMPDIR=${$(mktemp -d -t t_antidote.XXXXXXXX):A}
+  typeset -g T_PREV_HOME=$HOME
+  typeset -g T_PREV_ZDOTDIR=$ZDOTDIR
+
+  export HOME=$T_TEMPDIR
+  export ZDOTDIR=$HOME/.zsh
+  export ANTIDOTE_HOME=$HOME/.cache/antidote
+  export ANTIDOTE_CONFIG=$HOME/.config/antidote/test_config.zsh
+
+  # copy tmp_home contents
+  cp -rf $testdir/tmp_home/* $T_TEMPDIR
+
+  # put testdata into position
+  cp -rf -- $T_PRJDIR/tests $T_TEMPDIR/tests
+
+  # our mock plugins use this
+  typeset -ga plugins=()
+  typeset -ga libs=()
+
+  # use fixture gitconfig so fetch/pull resolve fake URLs to bare fixtures
+  # sed rewrites stored paths to match current fixture location
+  sed "s|/[^ \"]*/tests/fixtures/|${fixture_dir}/|g" "$fixture_dir/gitconfig" > "$HOME/.gitconfig"
+
+  # start from tmp home
+  pushd
+  cd $T_TEMPDIR
+
+  # source antidote
+  source $T_PRJDIR/antidote.zsh
+#}

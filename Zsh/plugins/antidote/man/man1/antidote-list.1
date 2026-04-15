@@ -1,0 +1,100 @@
+'\" t
+.\"     Title: antidote-list
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.26
+.\"      Date: 2026-03-25
+.\"    Manual: Antidote Manual
+.\"    Source: antidote
+.\"  Language: English
+.\"
+.TH "ANTIDOTE\-LIST" "1" "2026-03-25" "antidote" "Antidote Manual"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+antidote-list \- list cloned bundles
+.SH "SYNOPSIS"
+.sp
+\fBantidote list\fP [\-h|\-\-help]
+\fBantidote list\fP [\-l|\-\-long] [\-d|\-\-dirs] [\-u|\-\-url] [\-j|\-\-jsonl]
+.SH "DESCRIPTION"
+.sp
+\fBantidote\-list\fP lists the cloned bundles in \fBantidote home\fP.
+.sp
+By default, bundle path and URL pairs are shown one per line with path first.
+Use \fB\-\-long\fP for a verbose key\-value view of each bundle, \fB\-\-dirs\fP to show
+directory paths, \fB\-\-url\fP to show URLs only, or \fB\-\-jsonl\fP for machine\-readable
+output.
+.SH "OPTIONS"
+.sp
+\fB\-h, \-\-help\fP
+.RS 4
+Show the help documentation.
+.RE
+.sp
+\fB\-l, \-\-long\fP
+.RS 4
+Show detailed information for each bundle (repo, path, URL, SHA, pin status).
+.RE
+.sp
+\fB\-d, \-\-dirs\fP
+.RS 4
+Show bundle directory paths.
+.RE
+.sp
+\fB\-u, \-\-url\fP
+.RS 4
+Show bundle URLs only.
+.RE
+.sp
+\fB\-j, \-\-jsonl\fP
+.RS 4
+Output the bundle list in JSONL format.
+.RE
+.SH "BUGS"
+.sp
+See GitHub Issues: \c
+.URL "https://github.com/mattmc3/antidote/issues" "" ""
+.SH "AUTHORS"
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+Copyright (c) 2021\-2026 Matt McElheny
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+antidote contributors: \c
+.URL "https://github.com/mattmc3/antidote/graphs/contributors" "" ""
+.RE
+.SH "LICENSE"
+.sp
+MIT

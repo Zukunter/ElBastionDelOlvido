@@ -1,0 +1,39 @@
+format = """
+$username\
+$fill\
+$line_break\
+$directory\
+$line_break\
+$character"""
+
+[username]
+show_always = true
+# Explicación de colores:
+# #D1902E: Suse / Flechas exteriores
+# #D02F64: Rust-C# / Flechas cercanas al usuario
+# #187A77: El Usuario
+format = """
+[ ⁺✦₊ ](#D1902E)\
+[](#D1902E)\
+[](#D1902E)\
+[  ](#D02F64)\
+[](#D02F64)\
+[](#D02F64)\
+[ $user ](fg:#187A77 bold)\
+[](#D02F64)\
+[](#D02F64)\
+[  ](#D02F64)\
+[](#D1902E)\
+[](#D1902E)\
+[ ₊✦⁺ ](#D1902E) """
+
+[directory]
+style = "#187A77"
+truncation_length = 3
+
+[fill]
+symbol = " "
+
+[character]
+success_symbol = "[==>](bold green)"
+error_symbol = "[==>](bold red)"

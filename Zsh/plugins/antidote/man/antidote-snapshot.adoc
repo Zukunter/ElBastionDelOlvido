@@ -1,0 +1,108 @@
+= antidote-snapshot(1)
+:doctype: manpage
+:manmanual: Antidote Manual
+:mansource: antidote
+
+== Name
+antidote-snapshot - save, restore, remove, or list bundle snapshots
+
+== Synopsis
+*antidote snapshot* home
+
+*antidote snapshot* list
+
+*antidote snapshot* remove [<file>...]
+
+*antidote snapshot* restore [<file>]
+
+*antidote snapshot* save [<file>]
+
+== Description
+*antidote-snapshot* manages point-in-time snapshots of your cloned bundles. A snapshot is a bundle file where every repository is annotated with `kind:clone pin:<SHA>`, capturing the exact commit of each cloned bundle.
+
+Snapshots are saved automatically during `antidote update` in static mode. They are not created in dynamic mode.
+
+By default, snapshots are stored in `$XDG_DATA_HOME/antidote/snapshots` (or `~/Library/Application Support/antidote/snapshots` on macOS). A rolling history is maintained, with older snapshots pruned beyond the configured maximum.
+
+== Subcommands
+*home*:: Print the path to the snapshot directory.
+*list*:: List all available snapshot files.
+*remove*:: Remove snapshot files. If no file is given and `fzf` is available, an interactive multi-select picker is shown.
+*restore*:: Restore bundles from a snapshot file. If no file is given, the most recent snapshot is used.
+*save*:: Save a snapshot of all currently cloned bundles. Optionally specify a file path; otherwise a timestamped file is created in the snapshot directory.
+
+== Options
+*-h, --help*:: Show the help documentation.
+
+== Configuration
+
+The snapshot directory can be customized:
+
+----
+zstyle ':antidote:snapshot' dir ~/.antidote-snapshots
+----
+
+The maximum number of snapshots to keep (default 100):
+
+----
+zstyle ':antidote:snapshot' max 25
+----
+
+The command used for interactive snapshot selection (default `fzf`).
+Set it to an empty value to disable picker-based selection:
+
+----
+zstyle ':antidote:fzf' cmd fzf
+zstyle ':antidote:fzf' cmd ''
+----
+
+Set the `FZF_DEFAULT_OPTS` and `FZF_DEFAULT_OPTS_FILE` used for fzf in antidote:
+
+----
+zstyle ':antidote:fzf' opts "--height=40% --layout=reverse"
+zstyle ':antidote:fzf' opts_file ~/.config/antidote/fzf-opts
+----
+
+If `bat` is installed, it is used for syntax-highlighted fzf previews. If the Antidote Bundle syntax definition is also installed, it will be used; otherwise bat falls back to `properties` syntax. Set bat options with the following zstyle:
+
+----
+zstyle ':antidote:bat' opts "--style=plain"
+----
+
+Disable auto-snapshots on `antidote update` (explicit `antidote snapshot save` still works):
+
+----
+zstyle ':antidote:snapshot:automatic' enabled no
+----
+
+== Examples
+
+Show where snapshots are stored:
+
+----
+antidote snapshot home
+----
+
+Save a snapshot:
+
+----
+antidote snapshot save
+----
+
+List snapshots:
+
+----
+antidote snapshot list
+----
+
+Restore from the most recent snapshot:
+
+----
+antidote snapshot restore
+----
+
+Restore from a specific snapshot:
+
+----
+antidote snapshot restore ~/.local/share/antidote/snapshots/snapshot-20260101-120000.txt
+----

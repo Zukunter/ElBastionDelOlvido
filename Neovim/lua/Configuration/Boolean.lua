@@ -1,0 +1,11 @@
+vim.opt.number = true         -- Muestra números de línea
+vim.opt.expandtab = true
+vim.opt.cursorline = true     -- Resalta la línea actual
+vim.opt.termguicolors = true  -- Soporte para colores de 24 bits
+vim.opt.wrap = false
+vim.opt.hidden = true
+vim.opt.relativenumber = true
+vim.opt.swapfile = false
+vim.opt.undofile = true
+vim.opt.ignorecase = true -- Ignora mayúsculas al buscar
+vim.opt.smartcase = true  -- Si usas una mayúscula, se vuelve sensible

@@ -1,0 +1,56 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    wget \
+    build-essential \
+    libncursesw5-dev \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libexpat1-dev \
+    zlib1g-dev \
+    gettext \
+    automake \
+    man-db \
+    jq \
+    && rm -rf /var/lib/apt/lists/*
+
+# Build and install Git 2.17.0 from source (period-appropriate for Zsh 5.4.2, Jan 2018)
+RUN wget -q https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.17.0.tar.xz \
+    && tar -xf git-2.17.0.tar.xz \
+    && cd git-2.17.0 \
+    && make prefix=/usr -j$(nproc) \
+    && make prefix=/usr install \
+    && cd .. \
+    && rm -rf git-2.17.0 git-2.17.0.tar.xz
+
+# Install just
+RUN wget -qO- https://just.systems/install.sh | bash -s -- --to /usr/local/bin
+
+# Ubuntu minimal containers stub out /usr/bin/man; unminimize restores the real man
+RUN yes | unminimize 2>/dev/null || true
+
+# Build and install Zsh 5.4.2 from source
+# config.guess/config.sub in the 5.4.2 tarball are from 2009 and don't know
+# about aarch64, so we update them from automake before running configure.
+RUN wget -q https://sourceforge.net/projects/zsh/files/zsh/5.4.2/zsh-5.4.2.tar.xz \
+    && tar -xf zsh-5.4.2.tar.xz \
+    && cp /usr/share/automake-*/config.guess zsh-5.4.2/ \
+    && cp /usr/share/automake-*/config.sub zsh-5.4.2/ \
+    && cd zsh-5.4.2 \
+    && ./configure --with-tcsetpgrp \
+    && make -j$(nproc) \
+    && make install \
+    && cd .. \
+    && rm -rf zsh-5.4.2 zsh-5.4.2.tar.xz
+
+# Install clitest
+RUN git clone --depth=1 https://github.com/aureliojargas/clitest /opt/clitest
+
+ENV PATH="/opt/clitest:$PATH"
+ENV ZSH_BINARY="/usr/local/bin/zsh"
+
+WORKDIR /workspace
+
+CMD ["/usr/local/bin/zsh"]

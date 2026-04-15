@@ -1,0 +1,25 @@
+#!/bin/zsh
+#function t_setup_real {
+  0=${(%):-%x}
+
+  # Setup using standard test infrastructure
+  t_setup
+
+  # Override for real cloning (no fixture gitconfig, no test config)
+  typeset -g T_PRJDIR="${0:A:h:h:h}"
+  typeset -g T_TESTDATA=$T_PRJDIR/tests/testdata/real
+  unset ANTIDOTE_CONFIG
+
+  # remove fixture gitconfig so we clone from real GitHub
+  rm -f "$HOME/.gitconfig"
+
+  # replace test versions of bundle files with real versions
+  local file
+  for file in .zsh_plugins.txt .zsh_plugins.zsh; do
+    [[ -f $T_TESTDATA/$file ]] && command cp -f -- "$T_TESTDATA/$file" "$ZDOTDIR/$file"
+  done
+
+  # clean out antidote home
+  [[ -d $ANTIDOTE_HOME ]] && command rm -rf -- "$ANTIDOTE_HOME"
+  mkdir -p "$ANTIDOTE_HOME"
+#}

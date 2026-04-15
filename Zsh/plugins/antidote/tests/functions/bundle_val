@@ -1,0 +1,12 @@
+#!/bin/zsh
+#function bundle_val() {
+  emulate -L zsh; setopt local_options
+
+  local key=$1
+  local i
+
+  eval "$(cat)"
+  for (( i = 1; i <= _parsed_bundles[__count__]; i++ )); do
+    print -- "${_parsed_bundles[$i,$key]}"
+  done
+#}

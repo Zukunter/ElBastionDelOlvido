@@ -1,0 +1,98 @@
+'\" t
+.\"     Title: antidote-update
+.\"    Author: [see the "AUTHOR(S)" section]
+.\" Generator: Asciidoctor 2.0.26
+.\"      Date: 2026-03-23
+.\"    Manual: Antidote Manual
+.\"    Source: antidote
+.\"  Language: English
+.\"
+.TH "ANTIDOTE\-UPDATE" "1" "2026-03-23" "antidote" "Antidote Manual"
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.ss \n[.ss] 0
+.nh
+.ad l
+.de URL
+\fI\\$2\fP <\\$1>\\$3
+..
+.als MTO URL
+.if \n[.g] \{\
+.  mso www.tmac
+.  am URL
+.    ad l
+.  .
+.  am MTO
+.    ad l
+.  .
+.  LINKSTYLE blue R < >
+.\}
+.SH "NAME"
+antidote-update \- update bundles
+.SH "SYNOPSIS"
+.sp
+\fBantidote update\fP [\-h|\-\-help] [\-s|\-\-self] [\-b|\-\-bundles] [\-n|\-\-dry\-run]
+.SH "DESCRIPTION"
+.sp
+\fBantidote\-update\fP updates antidote and its cloned bundles. Bundles that have been pinned with the \f(CRpin:\fP annotation will be skipped. In static mode, a snapshot is automatically saved before updating so you can restore to the previous state if needed (see \fBantidote\-snapshot\fP).
+.SH "OPTIONS"
+.sp
+\fB\-h, \-\-help\fP
+.RS 4
+Show the help documentation.
+.RE
+.sp
+\fB\-s, \-\-self\fP
+.RS 4
+Update antidote.
+.RE
+.sp
+\fB\-b, \-\-bundles\fP
+.RS 4
+Update bundles.
+.RE
+.sp
+\fB\-n, \-\-dry\-run\fP
+.RS 4
+Check for available updates without making any changes.
+.RE
+.SH "EXAMPLES"
+.sp
+.if n .RS 4
+.nf
+.fam C
+antidote update
+.fam
+.fi
+.if n .RE
+.SH "BUGS"
+.sp
+See GitHub Issues: \c
+.URL "https://github.com/mattmc3/antidote/issues" "" ""
+.SH "AUTHORS"
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+Copyright (c) 2021\-2026 Matt McElheny
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04'\(bu\h'+03'\c
+.\}
+.el \{\
+.  sp -1
+.  IP \(bu 2.3
+.\}
+antidote contributors: \c
+.URL "https://github.com/mattmc3/antidote/graphs/contributors" "" ""
+.RE
+.SH "LICENSE"
+.sp
+MIT

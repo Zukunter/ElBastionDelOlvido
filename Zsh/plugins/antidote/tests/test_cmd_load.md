@@ -1,0 +1,83 @@
+# antidote load tests
+
+## Setup
+
+```zsh
+% source ./tests/__init__.zsh
+% t_setup
+%
+```
+
+Clone the standard test bundles:
+
+```zsh
+% antidote bundle <$ZDOTDIR/.base_test_fixtures.txt &>/dev/null
+%
+```
+
+### General
+
+```zsh
+% antidote load $ZDOTDIR/.zplugins_fake_load
+sourcing bar.plugin.zsh from foo/bar...
+sourcing qux.plugin.zsh from foo/qux...
+sourcing bar.plugin.zsh from foo/bar...
+sourcing lib/lib1.zsh from ohmy/ohmy...
+sourcing lib/lib2.zsh from ohmy/ohmy...
+sourcing lib/lib3.zsh from ohmy/ohmy...
+sourcing plugins/extract/extract.plugin.zsh from ohmy/ohmy...
+sourcing plugins/docker/docker.plugin.zsh from ohmy/ohmy...
+sourcing plugins/docker/docker.plugin.zsh from ohmy/ohmy...
+sourcing zsh-defer.plugin.zsh from getantidote/zsh-defer...
+sourcing plugins/magic-enter/magic-enter.plugin.zsh from ohmy/ohmy...
+sourcing custom/themes/pretty.zsh-theme from ohmy/ohmy...
+% cat $ZDOTDIR/.zplugins_fake_load.zsh | subenv  #=> --file testdata/.zplugins_fake_load.zsh
+% # cleanup
+% t_reset
+% antidote bundle <$ZDOTDIR/.base_test_fixtures.txt &>/dev/null
+%
+```
+
+### zstyles
+
+```zsh
+% cp $ZDOTDIR/.zplugins_fake_load $ZDOTDIR/.zplugins.txt
+% zstyle ':antidote:bundle' file $ZDOTDIR/.zplugins.txt
+% zstyle ':antidote:static' file $ZDOTDIR/.zplugins.txt
+% # the static file should be different
+% antidote load 2>&1 | subenv ZDOTDIR
+antidote: bundle file and static file are the same '$ZDOTDIR/.zplugins.txt'.
+% # fixed...
+% zstyle ':antidote:static' file $ZDOTDIR/.zplugins.static.zsh
+% # the static file should be different
+% antidote load
+sourcing bar.plugin.zsh from foo/bar...
+sourcing qux.plugin.zsh from foo/qux...
+sourcing bar.plugin.zsh from foo/bar...
+sourcing lib/lib1.zsh from ohmy/ohmy...
+sourcing lib/lib2.zsh from ohmy/ohmy...
+sourcing lib/lib3.zsh from ohmy/ohmy...
+sourcing plugins/extract/extract.plugin.zsh from ohmy/ohmy...
+sourcing plugins/docker/docker.plugin.zsh from ohmy/ohmy...
+sourcing plugins/docker/docker.plugin.zsh from ohmy/ohmy...
+sourcing zsh-defer.plugin.zsh from getantidote/zsh-defer...
+sourcing plugins/magic-enter/magic-enter.plugin.zsh from ohmy/ohmy...
+sourcing custom/themes/pretty.zsh-theme from ohmy/ohmy...
+% cat $ZDOTDIR/.zplugins.static.zsh | subenv  #=> --file testdata/.zplugins_fake_load.zsh
+%
+```
+
+### Missing bundlefile
+
+```zsh
+% antidote load /no/such/file.txt 2>&1
+antidote: bundle file not found '/no/such/file.txt'.
+%
+```
+
+## Teardown
+
+```zsh
+% t_teardown
+%
+```
