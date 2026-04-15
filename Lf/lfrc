@@ -1,0 +1,15 @@
+source ~/.config/lf/extra/make
+source ~/.config/lf/extra/moving
+source ~/.config/lf/extra/open
+source ~/.config/lf/extra/delete
+
+
+
+cmd reload-config source ~/.config/lf/lfrc
+map l reload-config
+set drawbox true
+set previewer ~/.config/lf/pv.sh
+set mouse true
+
+set icons true
+
