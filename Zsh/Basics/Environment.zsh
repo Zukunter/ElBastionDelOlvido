@@ -1,5 +1,6 @@
 #plugins
-export STARSHIP_CONFIG="$ZDOTDIR/plugins/starship.toml"
+export PluginsDir="$ZDOTDIR/Plugins"
+export STARSHIP_CONFIG="$PluginsDir/StarShip.toml"
 #XDG
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"

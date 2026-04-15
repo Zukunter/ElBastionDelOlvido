@@ -1,9 +1,9 @@
-zsh-users/zsh-completions
-zsh-users/zsh-autosuggestions
 z-shell/zsh-zoxide
+zsh-users/zsh-autosuggestions
 Aloxaf/fzf-tab
+zsh-users/zsh-completions
 ohmyzsh/ohmyzsh path:plugins/git
 ohmyzsh/ohmyzsh path:plugins/sudo
+zsh-users/zsh-syntax-highlighting
 ohmyzsh/ohmyzsh path:plugins/extract
 zsh-users/zsh-history-substring-search
-zsh-users/zsh-syntax-highlighting

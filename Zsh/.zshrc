@@ -1,36 +1,35 @@
-plugins_text="$ZDOTDIR/plugins/zsh_plugins.txt"
-plugins_compiled="$ZDOTDIR/plugins/zsh_plugins.zsh"
-plugins_antidote="$ZDOTDIR/plugins/antidote"
+source "$ZDOTDIR/Basics/Environment.zsh"
 
+# Load Antidote
+PluginsText="$PluginsDir/ListOfPlugins.txt"
+PluginsCompiled="$PluginsDir/CompiledPlugins.zsh"
+PluginsAntidote="$PluginsDir/Antidote"
 
-if [[ -d "$plugins_antidote" ]]; then
+if [[ -d "$PluginsAntidote" ]]; then
 
-	if [[ ! -f "$plugins_compiled" || "$plugins_text" -nt "$plugins_compiled" ]]; then
-	source "$plugins_antidote/antidote.zsh" 
-	antidote bundle < "$plugins_text" >| "$plugins_compiled"
-	fi
-	source "$plugins_compiled"
+  if [[ ! -f "$PluginsCompiled" || "$PluginsText" -nt "$PluginsCompiled" ]]; then
+    source "$PluginsAntidote/antidote.zsh"
+    antidote bundle <"$PluginsText" >|"$PluginsCompiled"
+  fi
+  source "$PluginsCompiled"
 fi
-
-if command -v starship &> /dev/null; then
-    eval "$(starship init zsh)"
+# Load StarShip
+if command -v starship &>/dev/null; then
+  eval "$(starship init zsh)"
 fi
 eval "$(zoxide init zsh)"
 
-
-#Map each one in extra
-extra="$ZDOTDIR/extras"
-
-if [[ -d "$extra" ]]; then
-    # Itera sobre cada archivo .zsh o .sh (puedes ajustar la extensión)
-    for file in "$extra"/*.{zsh,sh}(N); do
-        # El (N) es un "Null Glob" que evita errores si la carpeta está vacía
-        source "$file"
-    done
+# Load Functions, Binds and Basics
+if [[ -d "$ZDOTDIR/Functions" ]]; then
+  for file in "$ZDOTDIR/Functions"/*.{zsh,sh}(N); do
+    source "$file"
+  done
 fi
-
+source "$ZDOTDIR/Alias.zsh"
+source "$ZDOTDIR/Basics/GlobalSets.zsh"
+source "$ZDOTDIR/Basics/Maps.zsh"
 
 # If we are on tty1, start Hyprland automatically
-if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
-  exec start-hyprland
-fi
+# if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
+# exec start
+# fi
