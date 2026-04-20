@@ -1,3 +1,2 @@
-alias hyprlock='~/.config/hypr/hyprland/scripts/randomlock.sh && hyprlock'
 alias ls='eza --icons --group-directories-first'
 alias ll='eza -l --icons --group-directories-first'

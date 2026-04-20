@@ -20,7 +20,6 @@ selection-clear-on-copy = true
 font-size = 20
 font-family = "JetBrainsMono Nerd Font"
 font-feature = ["liga", "calt"]
-mouse-hide-while-typing = true  
 mouse-shift-capture = true
 right-click-action = copy-or-paste
 focus-follows-mouse = true

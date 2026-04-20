@@ -1,4 +1,4 @@
-#files: 820	version: 5.9
+#files: 825	version: 5.9
 
 _comps=(
 '-' '_precommand'
@@ -236,6 +236,7 @@ _comps=(
 'declare' '_typeset'
 '-default-' '_default'
 'delta' '_sccs'
+'deno' '_deno'
 'designate' '_openstack'
 'devtodo' '_devtodo'
 'df' '_df'
@@ -320,6 +321,7 @@ _comps=(
 'eza' '_eza'
 'fakeroot' '_fakeroot'
 'false' '_nothing'
+'fastfetch' '_fastfetch'
 'fc' '_fc'
 'fc-list' '_xft_fonts'
 'fc-match' '_xft_fonts'
@@ -790,6 +792,7 @@ _comps=(
 'mpc' '_mpc'
 'mplayer' '_mplayer'
 'mpstat' '_sysstat'
+'mpv' '_mpv'
 'mr' '_myrepos'
 'mrd' '_mtools'
 'mread' '_mtools'
@@ -1193,6 +1196,7 @@ _comps=(
 'swanctl' '_swanctl'
 'swift' '_swift'
 'swiftc' '_swift'
+'swww' '_swww'
 'sync' '_nothing'
 'sysctl' '_sysctl'
 'systemctl' '_systemctl'
@@ -1496,6 +1500,7 @@ _comps=(
 'ypwhich' '_yp'
 'ypxfr' '_yp'
 'ytalk' '_other_accounts'
+'yt-dlp' '_yt-dlp'
 'zargs' '_zargs'
 'zcalc' '_zcalc'
 '-zcalc-line-' '_zcalc_line'
@@ -1659,15 +1664,16 @@ bindkey '^[/' _history-complete-older
 bindkey '^[~' _bash_complete-word
 
 autoload -Uz _bat _bootctl _busctl _bwrap _coredumpctl \
-            _curl _eza _firewalld _flatpak _fuzzel \
-            _ghostty _git _gsettings _hostnamectl _hyprctl \
-            _insmod _journalctl _kernel-install _localectl _loginctl \
-            _lsmod _playerctl _rmmod _run0 _sd_bus_address \
-            _sd_hosts_or_user_at_host _sd_outputmodes _sd_unit_files _snapper _systemctl \
-            _systemd _systemd-analyze _systemd-delta _systemd-id128 _systemd-inhibit \
-            _systemd-path _systemd-run _systemd-tmpfiles _timedatectl _udevadm \
-            _udisks2 _upower _userdbctl _varlinkctl _wl-copy \
-            _wl-paste _wpctl _zoxide _cdr _all_labels \
+            _curl _deno _eza _fastfetch _firewalld \
+            _flatpak _fuzzel _ghostty _git _gsettings \
+            _hostnamectl _hyprctl _insmod _journalctl _kernel-install \
+            _localectl _loginctl _lsmod _mpv _playerctl \
+            _rmmod _run0 _sd_bus_address _sd_hosts_or_user_at_host _sd_outputmodes \
+            _sd_unit_files _snapper _swww _systemctl _systemd \
+            _systemd-analyze _systemd-delta _systemd-id128 _systemd-inhibit _systemd-path \
+            _systemd-run _systemd-tmpfiles _timedatectl _udevadm _udisks2 \
+            _upower _userdbctl _varlinkctl _wl-copy _wl-paste \
+            _wpctl _yt-dlp _zoxide _cdr _all_labels \
             _all_matches _alternative _approximate _arg_compile _arguments \
             _bash_completions _cache_invalid _call_function _combination _complete \
             _complete_debug _complete_help _complete_help_generic _complete_tag _comp_locale \

@@ -1,5 +1,0 @@
-setopt CORRECT
-setopt HIST_IGNORE_ALL_DUPS
-setopt GLOB_DOTS
-setopt HIST_REDUCE_BLANKS
-setopt SHARE_HISTORY

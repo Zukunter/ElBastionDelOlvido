@@ -1,0 +1,12 @@
+#Bloquear la pantalla tras 3 minutos de inactividad
+timeout 180 'hyprlock'timeout 180 '~/.config/hypr/hyprland/scripts/randomlock.sh.sh && hyprlock'
+
+# Apagar los monitores tras 5 minutos (ahorro de energía para gráficos integrados)
+timeout 300 'hyprctl dispatch dpms off' \
+            resume 'hyprctl dispatch dpms on'
+
+# Suspender el sistema tras 15 minutos
+#timeout 900 'systemctl suspend'
+
+# Bloquear automáticamente antes de que el sistema entre en reposo (Sleep)
+before-sleep 'hyprlock'

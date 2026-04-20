@@ -1,0 +1,182 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+
+    "modules-left": ["custom/play", "custom/arrow2", "custom/sound", "custom/arrow3", "pulseaudio"],
+    "modules-center": ["custom/bluetooth", "custom/arrow4", "custom/turn", "custom/arrow5", "custom/distro", "custom/arrow6", "custom/cpu", "custom/arrow7", "custom/wifi"],
+    "modules-right": ["custom/arrow8", "hyprland/workspaces", "custom/arrow9", "hyprland/submap", "custom/arrow10", "clock", "custom/arrow11", "custom/menu"],
+
+    /* --- MÓDULOS IZQUIERDA --- */
+    "custom/play": {
+        "format": "{}",
+        "return-type": "text",
+        "exec" : "~/User/ElBastionDelOlvido/Desktop/Sources/Scripts/PlayPause.sh",
+        "on-click": "playerctl --player=spotify,%any play-pause",
+        "interval" : 1,
+    },
+
+    "custom/arrow2": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/sound": {
+        "format": " {} ",
+        "tooltip-format": "{}",
+        "return-type": "json",
+        "exec": "~/User/ElBastionDelOlvido/Desktop/Sources/Scripts/GetPlayer.sh",
+        "on-scroll-up": "playerctl --player=spotify,%any next",
+        "on-scroll-down": "playerctl --player=spotify,%any previous",
+        "max-length": 40,
+        "escape": true,
+        "interval" : 5,
+    },
+
+    "custom/arrow3": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "󰸈",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "󰂑",
+            "headset": "󰂑",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "󰕾", "󰕾", ""]
+        },
+        "on-scroll-up": "pamixer -i 1",
+        "on-scroll-down": "pamixer -d 1",
+        "scroll-step": 1,
+        "on-click": "ghostty -e wiremix",
+        "on-click-right": "pamixer -t",
+        "tooltip": false
+    },
+
+"custom/bluetooth": {
+    "format": " {} ",
+    "return-type": "json",
+    "exec": "DEVICE=$(bluetoothctl devices Connected | grep 'Device' | cut -d ' ' -f 3-); if [ -n \"$DEVICE\" ]; then echo \"{\\\"text\\\": \\\"󰂱\\\", \\\"tooltip\\\": \\\"Connected to: $DEVICE\\\", \\\"class\\\": \\\"connected\\\"}\"; else echo \"{\\\"text\\\": \\\"󰂲\\\", \\\"tooltip\\\": \\\"Bluetooth Disconnected\\\", \\\"class\\\": \\\"disconnected\\\"}\"; fi",
+    "interval": 15,
+    "on-click": "hyprctl dispatch exec '[float; pin; size 1250 525; center] ghostty -e bluetui'"
+},
+
+    "custom/arrow4": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/turn": {
+        "format": "  ",
+        "on-click": "echo -e 'Poweroff\nReboot\nHibernate\nSuspend' | fuzzel --config ~/User/ElBastionDelOlvido/Desktop/Fuzzel.toml --dmenu --width 20 --lines 4 | xargs -I {} sh -c 'case {} in Poweroff) systemctl poweroff ;; Reboot) systemctl reboot ;; Hibernate) systemctl hibernate ;; Suspend) systemctl suspend ;; esac'",
+        "tooltip-format": "Click: Menú de energía"
+    },
+
+    "custom/arrow5": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/distro": {
+        "format": "  ",
+        "on-click": "hyprctl dispatch exec '[float; pin; size 1300 700; center] ghostty --wait-after-command -e fastfetch'",
+        "tooltip" : false
+    },
+
+    "custom/arrow6": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/cpu": {
+        "format": "   ",
+        "on-click": "hyprctl dispatch exec '[float; pin; size 1300 700; center] ghostty -e btop'",
+        "tooltip": false
+    },
+
+    "custom/arrow7": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/wifi": {
+        "format": " {} ",
+        "return-type": "json",
+        "exec": "SSID=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2); if [ -n \"$SSID\" ]; then echo \"{\\\"text\\\": \\\"󰤨\\\", \\\"tooltip\\\": \\\"Connected to $SSID\\\", \\\"class\\\": \\\"connected\\\"}\"; else echo \"{\\\"text\\\": \\\"󰤭 \\\", \\\"tooltip\\\": \\\"Unconnected\\\", \\\"class\\\": \\\"disconnected\\\"}\"; fi",
+        "interval": 15,
+        "on-click": "hyprctl dispatch exec '[float; pin; size 1250 525; center] ghostty -e impala'"
+    },
+
+    "custom/arrow8": {
+        "format": "  ",
+        "tooltip": false
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "active": "",
+            "default": "",
+            "1": "1", "2": "2", "3": "3", "4": "4", "5": "5",
+            "6": "6", "7": "7", "8": "8", "9": "9", "10": "0"
+        },
+        "all-outputs": true,
+        "persistent-workspaces": {
+            "*": 4
+        },
+        "reverse-order": true,
+        "max-length": 3
+    },
+
+    "custom/arrow9": {
+        "format": "  ",
+        "tooltip": false
+    },
+
+    "hyprland/submap": {
+        "format": " {} ",
+        "max-length": 70,
+        "always-on": true,
+        "tooltip": false
+    },
+
+    "custom/arrow10": {
+        "format": "  ",
+        "tooltip": false
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode"          : "month",
+            "mode-mon-col"  : 3,
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#D1902E'><b>{}</b></span>",
+                "days":       "<span color='#187A77'><b>{}</b></span>",
+                "weekdays":   "<span color='#D02F64'><b>{}</b></span>",
+                "today":      "<span color='#D1902E'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+
+    "custom/arrow11": {
+        "format": "  ",
+        "tooltip": false
+    },
+
+    "custom/menu": {
+        "format": " 󰍜 ",
+        "on-click-middle": "fuzzel --config ~/User/ElBastionDelOlvido/Desktop/Fuzzel.toml --show drun",
+        "on-click": "~/User/ElBastionDelOlvido/Desktop/Sources/Scripts/ChangeTheme.sh",
+        "on-click-right": "~/User/ElBastionDelOlvido/Desktop/Sources/Scripts/ChangeWallpaper.sh",
+        "tooltip": false
+    }
+}
