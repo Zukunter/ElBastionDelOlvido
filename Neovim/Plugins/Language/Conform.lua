@@ -1,4 +1,4 @@
-return {
+{
 	"stevearc/conform.nvim",
 	lazy = true,
 	-- event = { "BufWritePre" }, -- Formatea al guardar
@@ -39,4 +39,4 @@ return {
 			["_"] = { "trim_whitespace" },
 		},
 	},
-}
+},

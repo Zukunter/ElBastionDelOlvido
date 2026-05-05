@@ -1,10 +1,10 @@
 function zyin()
 {
-	sudo zypper in "$1"
+    sudo zypper in "$@"
 }
 function zyrm()
 {
-	sudo zypper rm "$1"
+	sudo zypper rm "$@"
 }
 function zydup()
 {

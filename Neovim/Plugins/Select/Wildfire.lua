@@ -1,4 +1,4 @@
-return {
+{
   "sustech-data/wildfire.nvim",
   event = "VeryLazy",
 	lazy = true,
@@ -12,4 +12,4 @@ return {
       },
     })
   end,
-}
+},

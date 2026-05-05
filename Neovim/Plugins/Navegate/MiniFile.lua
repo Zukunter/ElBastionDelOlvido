@@ -1,4 +1,4 @@
-return {
+{
 	{
 		"echasnovski/mini.files",
 		version = "*",
@@ -19,4 +19,4 @@ return {
 			})
 		end,
 	},
-}
+},

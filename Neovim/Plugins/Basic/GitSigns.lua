@@ -1,4 +1,4 @@
-return {
+{
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile" },
 	lazy = true,
@@ -22,4 +22,4 @@ return {
             delay = 500,
         },
     },
-}
+},

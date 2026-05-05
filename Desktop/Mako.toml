@@ -51,7 +51,7 @@ on-button-middle=dismiss-all
 on-button-right=invoke-default-action
 # Notify
 on-notify=none
-anchor=top-left
+anchor=bottom-right
 default-timeout=500
 #sort=-time
 #max-visible=3

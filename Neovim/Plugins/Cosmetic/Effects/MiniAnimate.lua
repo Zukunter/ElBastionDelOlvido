@@ -1,4 +1,4 @@
-return {
+{
 	"echasnovski/mini.animate",
 	version = "*",
 	config = function()
@@ -15,4 +15,4 @@ return {
 			close = { enable = true },
 		})
 	end,
-}
+},

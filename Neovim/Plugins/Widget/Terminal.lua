@@ -1,4 +1,4 @@
-return {
+{
 	"akinsho/toggleterm.nvim",
 	version = "*",
 	cmd = "ToggleTerm",
@@ -21,4 +21,4 @@ return {
 			},
 		},
 	},
-}
+},

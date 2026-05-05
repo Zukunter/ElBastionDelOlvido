@@ -1,4 +1,4 @@
-return {
+{
 	"sphamba/smear-cursor.nvim",
 	opts = {
 		-- You can customize the color to match your theme
@@ -9,4 +9,4 @@ return {
 		cursor_color = "#187A77",
 		trailing_stiffness = 0.1, -- Trail speed / Velocidad de la estela
 	},
-}
+},

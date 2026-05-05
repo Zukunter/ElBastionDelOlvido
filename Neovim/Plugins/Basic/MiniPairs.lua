@@ -1,4 +1,4 @@
-return {
+{
   "echasnovski/mini.pairs",
   version = false,
   config = function()
@@ -28,4 +28,4 @@ return {
       },
     })
   end,
-}
+},

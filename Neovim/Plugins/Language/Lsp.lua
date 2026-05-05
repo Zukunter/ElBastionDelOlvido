@@ -1,4 +1,4 @@
-return {
+{
 	"williamboman/mason.nvim",
 	cmd = "Mason",
 	ft = { "c", "cpp", "zig", "rust", "python", "asm", "s", "S" },
@@ -11,14 +11,14 @@ return {
 		-- Mason
 		require("mason").setup()
 
-		vim.api.nvim_create_autocmd("LspAttach", {
-			callback = function(args)
-				local client = vim.lsp.get_client_by_id(args.data.client_id)
-				if client and client.server_capabilities.inlayHintProvider then
-					vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
-				end
-			end,
-		})
+		-- vim.api.nvim_create_autocmd("LspAttach", {
+		-- 	callback = function(args)
+		-- 		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		-- 		if client and client.server_capabilities.inlayHintProvider then
+		-- 			vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+		-- 		end
+		-- 	end,
+		-- })
 
 		-- Servidores
 		local servers = {
@@ -130,29 +130,29 @@ return {
 					},
 				},
 			},
-			dockerls = {
-				settings = {
-					docker = {
-						languageserver = {
-							diagnostics = {
-								deprecatedDirectives = "error",
-								instructionJSONInSingleQuotes = "warning",
-								instructionCasing = "uppercase",
-							},
-							formatter = { ignoreMultiline = false },
-						},
-					},
-				},
-			},
-			docker_compose_language_service = {
-				filetypes = { "yaml.docker-compose", "yaml" },
-				root_dir = require("lspconfig.util").root_pattern(
-					"docker-compose.yaml",
-					"docker-compose.yml",
-					"compose.yaml",
-					"compose.yml"
-				),
-			},
+			-- dockerls = {
+			-- 	settings = {
+			-- 		docker = {
+			-- 			languageserver = {
+			-- 				diagnostics = {
+			-- 					deprecatedDirectives = "error",
+			-- 					instructionJSONInSingleQuotes = "warning",
+			-- 					instructionCasing = "uppercase",
+			-- 				},
+			-- 				formatter = { ignoreMultiline = false },
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
+			-- docker_compose_language_service = {
+			-- 	filetypes = { "yaml.docker-compose", "yaml" },
+			-- 	root_dir = require("lspconfig.util").root_pattern(
+			-- 		"docker-compose.yaml",
+			-- 		"docker-compose.yml",
+			-- 		"compose.yaml",
+			-- 		"compose.yml"
+			-- 	),
+			-- },
 		}
 
 		local formatters = {
@@ -187,4 +187,4 @@ return {
 			vim.lsp.enable(name)
 		end
 	end,
-}
+},

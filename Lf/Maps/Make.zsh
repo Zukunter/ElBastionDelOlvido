@@ -12,4 +12,4 @@ cmd mks ${{
     
     lf -remote "send $id reload"
 }}
-map a mks
+map A mks

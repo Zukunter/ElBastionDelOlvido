@@ -1,4 +1,4 @@
-return {
+{
   "neanias/everforest-nvim",
   version = false,
   lazy = false,
@@ -9,4 +9,4 @@ return {
             italics = true,
     })
   end,
-}
+},

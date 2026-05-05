@@ -1,4 +1,4 @@
-return {
+{
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
@@ -81,4 +81,4 @@ return {
 			telescope.load_extension("fzf")
 		end,
 	},
-}
+},

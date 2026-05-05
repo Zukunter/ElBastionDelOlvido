@@ -1,3 +1,4 @@
+--Si hola
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -14,17 +15,13 @@ vim.opt.rtp:prepend(lazypath)
 
 
 require("lazy").setup({
-	spec = {
-		{ import = "Plugins.Cosmetic.Effects" },
-		{ import = "Plugins.Cosmetic.Themes" },
-		{ import = "Plugins.Basic" },
-		{ import = "Plugins.Widget" },
-		{ import = "Plugins.Navegate" },
-		{ import = "Plugins.Select" },
-		{ import = "Plugins.Language" },
-	},
+--nexus(/home/Zukunter/User/ElBastionDelOlvido/Neovim/Plugins)
 	checker = {
 		enabled = true, -- check for plugin updates periodically
 		notify = false, -- notify on update
 	},
 })
+
+--nexus(/home/Zukunter/User/ElBastionDelOlvido/Neovim/Maps)
+--nexus(/home/Zukunter/User/ElBastionDelOlvido/Neovim/Configuration)
+--nexus(/home/Zukunter/User/ElBastionDelOlvido/Neovim/StartUp)

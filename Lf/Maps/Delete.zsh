@@ -19,7 +19,7 @@ cmd delete-safe ${{
     fi
 }}
 
-map d delete-safe
+map D delete-safe
 
 cmd file_to_dir %{{
     # Guardar el nombre del archivo actual / Den aktuellen Dateinamen speichern
@@ -37,4 +37,4 @@ cmd file_to_dir %{{
     # mkdir -p "$filename" && mv "$f" "$filename/"
 }}
 
-map D file_to_dir
+map F file_to_dir

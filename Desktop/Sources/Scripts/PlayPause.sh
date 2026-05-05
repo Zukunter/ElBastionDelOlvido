@@ -5,6 +5,6 @@
   elif [ "$STATUS" = "Paused" ]; then
     echo ""
   else
-    echo "?"
+    echo " "
   fi
 

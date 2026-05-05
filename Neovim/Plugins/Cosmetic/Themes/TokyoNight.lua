@@ -1,4 +1,4 @@
-return {
+{
 	"folke/tokyonight.nvim",
 	lazy = true,
 	-- priority = 1000,
@@ -14,4 +14,4 @@ return {
 	config = function(_, opts)
 		require("tokyonight").setup(opts)
 	end,
-}
+},

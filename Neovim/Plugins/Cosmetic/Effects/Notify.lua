@@ -1,5 +1,5 @@
 -- Mit lazy.nvim installieren / Install with lazy.nvim
-return {
+{
   "rcarriga/nvim-notify",
   opts = {
     timeout = 3000, -- Verschwindet nach 3 Sekunden / Disappears after 3s 
@@ -11,4 +11,4 @@ return {
     notify.setup(opts)
     vim.notify = notify
   end,
-}
+},

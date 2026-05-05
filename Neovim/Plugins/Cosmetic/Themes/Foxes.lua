@@ -1,4 +1,4 @@
-return {
+{
 	{
 		"EdenEast/nightfox.nvim",
 		lazy = true, -- Cargar al inicio para evitar parpadeos
@@ -50,4 +50,4 @@ return {
 			})
 		end,
 	},
-}
+},
