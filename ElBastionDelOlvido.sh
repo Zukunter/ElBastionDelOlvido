@@ -1,4 +1,12 @@
 #!/bin/bash
+sudo zypper in -y neovim lf git curl unzip zsh hyprland hyprshot hyprsunset awww rust clang zig nasm wtype ydotool \
+    ghostty waybar mako fuzzel mpv docker steam btop fastfetch \
+    eza flatpak fzf ripgrep make npm pamixer playerctl python315 zoxide \
+
+cargo install starship --locked
+cargo install treesiter-cli
+flatpak install app.zen_browser.zen
+flatpak install com.spotify.Client
 # Make the Directorys
 #mkdir -p $HOME/User/ElBastionDelOlvido
 mkdir -p $HOME/User/Fixed/Configurations
@@ -28,3 +36,7 @@ unzip -o $HOME/Temporal/JetBrainsMono.zip -d ~/.local/share/fonts
 fc-cache -fv
 # Set Variables
 curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/Env.sh -o $HOME/.zshenv
+#Command to set
+sudo usermod -aG input $USER
+sudo systemctl enable docker
+sudo usermod -aG docker $USER
