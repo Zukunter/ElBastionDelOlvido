@@ -5,6 +5,7 @@ sudo zypper in -y neovim lf git curl unzip zsh hyprland hyprshot hyprsunset awww
 
 cargo install starship --locked
 cargo install treesiter-cli
+flatpak remote-add --if-not-exists flathub [https://flathub.org/repo/flathub.flatpakrepo](https://flathub.org/repo/flathub.flatpakrepo)
 flatpak install app.zen_browser.zen
 flatpak install com.spotify.Client
 # Make the Directorys
@@ -40,3 +41,11 @@ curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/Env
 sudo usermod -aG input $USER
 sudo systemctl enable docker
 sudo usermod -aG docker $USER
+sudo chsh -s $(which zsh) $USER
+chmod +x $HOME/User/ElBastionDelOlvido/**/*.sh
+rm -rf $HOME/Temporal
+sudo timedatectl set-local-rtc 0
+sudo zypper clean -a
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+export MAKEFLAGS="-j$(nproc)"
+cargo install sccache
