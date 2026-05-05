@@ -20,6 +20,7 @@ if command -v starship &>/dev/null; then
 fi
 eval "$(zoxide init zsh)"
 
+
 setopt CORRECT
 setopt HIST_IGNORE_ALL_DUPS
 setopt GLOB_DOTS
