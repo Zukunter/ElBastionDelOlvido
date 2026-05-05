@@ -3,11 +3,12 @@ sudo zypper in -y neovim lf git curl unzip zsh hyprland hyprshot hyprsunset awww
     ghostty waybar mako fuzzel mpv docker steam btop fastfetch \
     eza flatpak fzf ripgrep make npm pamixer playerctl python315 zoxide \
 
-cargo install starship --locked
-cargo install treesiter-cli
-flatpak remote-add --if-not-exists flathub [https://flathub.org/repo/flathub.flatpakrepo](https://flathub.org/repo/flathub.flatpakrepo)
-flatpak install app.zen_browser.zen
-flatpak install com.spotify.Client
+cargo install starship --locked --force
+cargo install treesiter-cli --locked --force
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install -y flathub app.zen_browser.zen
+flatpak install -y flathub org.vinegarhq.Sober
+flatpak install -y flathub com.spotify.Client
 # Make the Directorys
 #mkdir -p $HOME/User/ElBastionDelOlvido
 mkdir -p $HOME/User/Fixed/Configurations
