@@ -1,7 +1,7 @@
 {
 	"williamboman/mason.nvim",
 	cmd = "Mason",
-	ft = { "c", "cpp", "zig", "rust", "python", "asm", "s", "S" },
+	ft = { "c", "cpp", "zig", "rust", "python" },
 	dependencies = {
 		"neovim/nvim-lspconfig",
 		"williamboman/mason-lspconfig.nvim",
@@ -22,10 +22,10 @@
 
 		-- Servidores
 		local servers = {
-			asm_lsp = {
-				filetypes = { "asm", "s", "S" },
-				root_dir = require("lspconfig.util").root_pattern(".git", ".asm_lsp.toml"),
-			},
+			-- asm_lsp = {
+			-- 	filetypes = { "asm", "s", "S" },
+			-- 	root_dir = require("lspconfig.util").root_pattern(".git", ".asm_lsp.toml"),
+			-- },
 			rust_analyzer = {
 				settings = {
 					["rust-analyzer"] = {
