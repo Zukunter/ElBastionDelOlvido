@@ -1,10 +1,12 @@
 #!/bin/bash
 sudo zypper in -y neovim lf git curl unzip zsh hyprland hyprshot hyprsunset awww rust clang zig nasm wtype ydotool \
     ghostty waybar mako fuzzel mpv docker steam btop fastfetch \
-    eza flatpak fzf ripgrep make npm pamixer playerctl python315 zoxide \
+    eza flatpak fzf ripgrep make npm pamixer playerctl python315 zoxide 
 
 cargo install starship --locked --force
+cargo install sccache --locked --force
 cargo install treesiter-cli --locked --force
+
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y flathub app.zen_browser.zen
 flatpak install -y flathub org.vinegarhq.Sober
@@ -16,7 +18,15 @@ mkdir -p $HOME/User/Fixed/Downloads
 mkdir -p $HOME/User/Fixed/Pictures
 mkdir -p $HOME/User/Fixed/Videos
 mkdir -p $HOME/User/Fixed/Audios
-mkdir -p $HOME/WorkSpace
+
+mkdir -p $HOME/User/Workspace/RustLib
+mkdir -p $HOME/User/Workspace/Schone
+mkdir -p $HOME/User/Workspace/Zig/ztd
+mkdir -p $HOME/User/Workspace/Nucloide
+
+git clone -b Stable https://github.com/Zukunter/Nexus.git ~/User/Workspace/Nexus
+git clone -b Stable https://github.com/Zukunter/Nexus.git ~/User/Workspace/RustLib/ztd
+
 
 
 Ghostty=$HOME/User/Fixed/Configurations/ghostty
@@ -49,4 +59,4 @@ sudo timedatectl set-local-rtc 0
 sudo zypper clean -a
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 export MAKEFLAGS="-j$(nproc)"
-cargo install sccache
+

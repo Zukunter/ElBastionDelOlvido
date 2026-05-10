@@ -1,0 +1,1 @@
+-i ./Init.lua -o /home/Zukunter/User/Fixed/Configurations/nvim/init.lua -r true -p --

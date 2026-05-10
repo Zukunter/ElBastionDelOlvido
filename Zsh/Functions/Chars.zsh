@@ -1,4 +1,4 @@
-alias nexusnvim="nexus --input /home/Zukunter/User/ElBastionDelOlvido/Neovim/Init.lua -r true -p -- -o /home/Zukunter/User/Fixed/Configurations/nvim/init.lua"
+alias noxvim="nexo --input /home/Zukunter/User/ElBastionDelOlvido/Neovim/Init.lua -r true -p -- -o /home/Zukunter/User/Fixed/Configurations/nvim/init.lua"
 function c() {
     local clear_at_end=false
 
