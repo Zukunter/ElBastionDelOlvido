@@ -1,6 +1,3 @@
-# source "$ZDOTDIR/Basics/Environment.zsh"
-#export PATH="$HOME/.cargo/bin/:$PATH"
-export PATH="/home/Zukunter/.cargo/bin:/home/Zukunter/.local/bin:$PATH"
 # Load Antidote
 PluginsText="$PluginsDir/ListOfPlugins.txt"
 PluginsCompiled="$PluginsDir/CompiledPlugins.zsh"

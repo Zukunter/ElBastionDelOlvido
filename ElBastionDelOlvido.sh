@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo zypper in -y neovim lf git curl unzip zsh hyprland hyprshot hyprsunset awww rust clang zig nasm wtype ydotool \
     ghostty waybar mako fuzzel mpv docker steam btop fastfetch \
-    eza flatpak fzf ripgrep make npm pamixer playerctl python315 zoxide 
+    eza flatpak fzf ripgrep make npm pamixer playerctl python315 zoxide bat
 
 cargo install starship --locked --force
 cargo install sccache --locked --force
@@ -40,6 +40,8 @@ touch "$Hyprland/hyprland.conf"
 echo "source = $HOME/User/ElBastionDelOlvido/Desktop/Hyprland/Start.conf" > "$Hyprland/hyprland.conf"
 # Copy the repository
 git clone -b Stable https://github.com/Zukunter/ElBastionDelOlvido.git ~/User/ElBastionDelOlvido
+rm -r ~/User/ElBastionDelOlvido/Zsh/Plugins/antidote
+git clone -b main 	https://github.com/mattmc3/antidote.git ~/User/ElBastionDelOlvido/Zsh/Plugins/antidote
 # Install JetBrainsMono
 mkdir -p $HOME/.local/share/fonts
 mkdir $HOME/Temporal
@@ -58,5 +60,5 @@ rm -rf $HOME/Temporal
 sudo timedatectl set-local-rtc 0
 sudo zypper clean -a
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-export MAKEFLAGS="-j$(nproc)"
+#export MAKEFLAGS="-j$(nproc)"
 
