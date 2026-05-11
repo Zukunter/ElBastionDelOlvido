@@ -1,13 +1,15 @@
-function zyin()
+function zin()
 {
     sudo zypper in "$@"
 }
-function zyrm()
+function zrm()
 {
 	sudo zypper rm "$@"
 }
-function zydup()
+function zdup()
 {
 	sudo zypper dup
 }
-
+function zsr(){
+    zypper search "$@"
+}

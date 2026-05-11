@@ -1,4 +1,5 @@
 # Load SetUp
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 source "$ZDOTDIR/Basics/SetUp.zsh"
 # Load Functions, Binds and Basics
 if [[ -d "$ZDOTDIR/Functions" ]]; then

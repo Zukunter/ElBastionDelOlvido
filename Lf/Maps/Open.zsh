@@ -21,7 +21,3 @@ cmd give ${{
     chmod +x "$f"
 }}
 map G give
-cmd void ${{
-   sudo echo "" > "$f"
-  }}
-map E void

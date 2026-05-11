@@ -1,4 +1,5 @@
 source ~/User/ElBastionDelOlvido/Lf/Maps/Delete.zsh
+source ~/User/ElBastionDelOlvido/Lf/Maps/Execute.sh
 source ~/User/ElBastionDelOlvido/Lf/Maps/Make.zsh
 source ~/User/ElBastionDelOlvido/Lf/Maps/Open.zsh
 map x cut

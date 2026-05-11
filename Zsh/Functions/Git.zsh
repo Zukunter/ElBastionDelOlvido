@@ -2,18 +2,21 @@ alias ls='eza --icons --group-directories-first'
 alias ll='eza -l --icons --group-directories-first'
 
 
-gpush() { 
+function gpush() { 
     git push "$@" 
 }
-gadd() {
+function gadd() {
     git add "$@"
 }
-gcom(){
-    git commit "$@"
+function gcom(){
+    git commit -m "$@"
 }
-gbranch() {
+function gbranch() {
     git branch "$@"
 }
-gpull(){
+function gpull(){
     git pull "$@"
+}
+function gpush(){
+    git push "$@"
 }
