@@ -63,7 +63,7 @@
     "return-type": "json",
     "exec": "DEVICE=$(bluetoothctl devices Connected | grep 'Device' | cut -d ' ' -f 3-); if [ -n \"$DEVICE\" ]; then echo \"{\\\"text\\\": \\\"󰂱\\\", \\\"tooltip\\\": \\\"Connected to: $DEVICE\\\", \\\"class\\\": \\\"connected\\\"}\"; else echo \"{\\\"text\\\": \\\"󰂲\\\", \\\"tooltip\\\": \\\"Bluetooth Disconnected\\\", \\\"class\\\": \\\"disconnected\\\"}\"; fi",
     "interval": 15,
-    "on-click": "hyprctl dispatch exec '[float; pin; size 1250 525; center] ghostty -e bluetui'"
+    "on-click": "hyprctl dispatch exec '[float; pin; size 1250 525; center] ghostty --font-size=9 -e bluetui'"
 },
 
     "custom/arrow4": {
@@ -84,7 +84,7 @@
 
     "custom/distro": {
         "format": "  ",
-        "on-click": "hyprctl dispatch exec '[float; pin; size 1300 700; center] ghostty --wait-after-command -e fastfetch'",
+        "on-click": "hyprctl dispatch exec '[float; pin; size 1300 700; center] ghostty --wait-after-command --font-size=7 -e fastfetch'",
         "tooltip" : false
     },
 
@@ -95,7 +95,7 @@
 
     "custom/cpu": {
         "format": "   ",
-        "on-click": "hyprctl dispatch exec '[float; pin; size 1300 700; center] ghostty -e btop'",
+        "on-click": "hyprctl dispatch exec '[float; pin; size 1200 800; center] ghostty --font-size=10  -e btop'",
         "tooltip": false
     },
 
@@ -109,7 +109,7 @@
         "return-type": "json",
         "exec": "SSID=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2); if [ -n \"$SSID\" ]; then echo \"{\\\"text\\\": \\\"󰤨\\\", \\\"tooltip\\\": \\\"Connected to $SSID\\\", \\\"class\\\": \\\"connected\\\"}\"; else echo \"{\\\"text\\\": \\\"󰤭 \\\", \\\"tooltip\\\": \\\"Unconnected\\\", \\\"class\\\": \\\"disconnected\\\"}\"; fi",
         "interval": 15,
-        "on-click": "hyprctl dispatch exec '[float; pin; size 1250 525; center] ghostty -e impala'"
+        "on-click": "hyprctl dispatch exec '[float; pin; size 900 875; center] ghostty --font-size=8 -e sudo nmtui'"
     },
 
     "custom/arrow8": {

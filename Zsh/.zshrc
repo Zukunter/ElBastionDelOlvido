@@ -1,3 +1,7 @@
+# Start at Workspace
+if [ -d "User/Workspace/" ]; then
+    cd "$HOME/User/Workspace"
+fi
 # Load SetUp
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 source "$ZDOTDIR/Basics/SetUp.zsh"
