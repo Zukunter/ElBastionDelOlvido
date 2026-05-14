@@ -7,7 +7,7 @@ set -euo pipefail
 sudo zypper ar -f https://download.opensuse.org/repositories/home:/ericfrs/openSUSE_Tumbleweed/ EricfrsRepo
 
 # block files
-sudo zypper rm 'yast2-*'
+sudo zypper rm -y 'yast2-*'
 sudo zypper al 'yast2-*'
 
 # refresh
@@ -16,9 +16,9 @@ sudo zypper ref
 # install by zypper
 sudo zypper in -y neovim lf git curl unzip zsh hyprland hyprshot hyprsunset \
     awww rust clang zig nasm wtype ydotool zen-browser firewalld wireplumber \
-    pipewire pipewire-pulse \
+    pipewire pipewire-pulseaudio pipewire-alsa wireplumber \
     ghostty waybar mako fuzzel mpv docker steam btop fastfetch whatsapp-for-linux \
-    eza flatpak fzf ripgrep make npm pamixer playerctl python315 zoxide bat \
+    eza flatpak fzf ripgrep make pamixer playerctl python315 zoxide bat \
     hyprpolkitagent gnome-disk-utility nautilus xdg-desktop-portal-hyprland bluetui 
 
 # install by cargo
@@ -113,12 +113,15 @@ gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # services
 sudo systemctl enable docker
-systemctl -enable --now pipewire pipewire-pulse wireplumber
 systemctl enable --now hyprpolkitagent.service
 sudo systemctl enable --now firewalld
 sudo firewall-cmd --zone=trusted --add-interface=docker0 --permanent
 sudo systemctl enable --now snapper-cleanup.timer
 sudo systemctl disable --now snapper-timeline.timer
+systemctl enable --now pipewire.{service,socket}
+systemctl enable --now pipewire-pulse.{service,socket}
+systemctl enable --now wireplumber.service
+
 
 # enders
 sudo zypper -y dup
