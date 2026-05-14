@@ -12,12 +12,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
---nexus -i ./Plugins -c 432 -r true
+--nexus -i ./Plugins
 	checker = {
 		enabled = true, 
 		notify = false, 
 	},
 })
---nexus -i ./Maps -c 432 -r true
---nexus -i ./Configuration -c 432 -r true
---nexus -i ./StartUp -c 432 -r true
+--nexus -i ./Maps 
+--nexus -i ./Configuration 
+--nexus -i ./StartUp 
+
+--nexus -e luajit init.lua _

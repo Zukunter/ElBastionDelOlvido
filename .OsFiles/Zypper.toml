@@ -1,0 +1,9 @@
+[main]
+download.use_multicurl = true
+[solver]
+[commit]
+[search]
+[color]
+useColors = always
+[obs]
+[subcommand]
