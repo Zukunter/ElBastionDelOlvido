@@ -15,7 +15,7 @@ sudo zypper ref
 
 # install by zypper
 sudo zypper in -y neovim lf git curl unzip zsh hyprland hyprshot hyprsunset \
-    awww rust clang zig nasm wtype ydotool zen-browser firewalld wireplumber \
+    awww rust clang zig nasm wtype ydotool zen-browser firewalld \
     pipewire pipewire-pulseaudio pipewire-alsa wireplumber \
     ghostty waybar mako fuzzel mpv docker steam btop fastfetch whatsapp-for-linux \
     eza flatpak fzf ripgrep make pamixer playerctl python315 zoxide bat \
@@ -80,28 +80,28 @@ rm -rf $HOME/Temporal
 
 # set os's files
 # set ZshEnv
-curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/OsFiles/ZshEnv.zsh -o $HOME/.zshenv
+curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/.OsFiles/ZshEnv.zsh -o $HOME/.zshenv
 
 # set resolv
 sudo chattr -i /etc/resolv.conf
 sudo rm -rf /etc/resolv.conf
-sudo curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/OsFiles/Resolv.toml -o /etc/resolv.conf
+sudo curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/.OsFiles/Resolv.toml -o /etc/resolv.conf
 sudo chattr +i /etc/resolv.conf
 
 # set zypper
 sudo chattr -i /etc/zypp/zypper.conf
 sudo rm -rf /etc/resolv.conf
-sudo curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/OsFiles/Zypper.toml -o /etc/zypp/zypper.conf
+sudo curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/.OsFiles/Zypper.toml -o /etc/zypp/zypper.conf
 
 # set snapper confg
 sudo chattr -i /etc/snapper/configs/root
 sudo rm -rf /etc/snapper/configs/root
-sudo curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/OsFiles/SnapperConf.toml -o /etc/snapper/configs/root
+sudo curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/.OsFiles/SnapperConf.toml -o /etc/snapper/configs/root
 
 # set snapper service
 sudo chattr -i /etc/systemd/system/snapper-cleanup.timer
 sudo rm -rf /etc/systemd/system/snapper-cleanup.timer
-sudo curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/OsFiles/SnapperService.toml -o /etc/systemd/system/snapper-cleanup.timer
+sudo curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/.OsFiles/SnapperService.toml -o /etc/systemd/system/snapper-cleanup.timer
 
 # add user
 sudo usermod -aG input $USER

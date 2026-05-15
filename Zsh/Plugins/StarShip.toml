@@ -8,10 +8,6 @@ $character"""
 
 [username]
 show_always = true
-# Explicación de colores:
-# #D1902E: Suse / Flechas exteriores
-# #D02F64: Rust-C# / Flechas cercanas al usuario
-# #187A77: El Usuario
 format = """
 [ ⁺✦₊ ](#D1902E)\
 [](#D1902E)\
@@ -22,14 +18,14 @@ format = """
 [ $user ](fg:#187A77 bold)\
 [](#D02F64)\
 [](#D02F64)\
-[  ](#D02F64)\
+[  ](#D02F64)\
 [](#D1902E)\
 [](#D1902E)\
 [ ₊✦⁺ ](#D1902E) """
 
 [directory]
 style = "#187A77"
-truncation_length = 3
+truncation_length = 1
 
 [fill]
 symbol = " "
