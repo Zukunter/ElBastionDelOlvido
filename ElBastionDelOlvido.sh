@@ -22,7 +22,7 @@ sudo zypper in -y neovim lf git curl unzip zsh hyprland hyprshot hyprsunset \
     pipewire pipewire-pulseaudio pipewire-alsa wireplumber \
     ghostty waybar mako fuzzel mpv docker steam btop whatsapp-for-linux \
     eza flatpak fzf ripgrep make pamixer playerctl python315 zoxide bat \
-    hyprpolkitagent gnome-disk-utility nautilus xdg-desktop-portal-hyprland bluetui 
+    gnome-disk-utility nautilus xdg-desktop-portal-hyprland bluetui 
 
 # install by cargo
 cargo install starship --locked --force
@@ -118,7 +118,6 @@ gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # services
 sudo systemctl enable docker
-sudo systemctl enable --now hyprpolkitagent.service
 sudo systemctl enable --now firewalld
 sudo firewall-cmd --zone=trusted --add-interface=docker0 --permanent
 sudo systemctl enable --now snapper-cleanup.timer
