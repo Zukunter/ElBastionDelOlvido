@@ -84,7 +84,9 @@
 
     "custom/distro": {
         "format": "  ",
-        "on-click": "hyprctl dispatch exec '[float; pin; size 1300 700; center] ghostty --wait-after-command --font-size=7 -e fastfetch'",
+        "on-click": "hyprctl dispatch exec '[float; pin; size 1300 700; center] ghostty -e zsh'",
+        "on-click-middle": "hyprctl dispatch exec '[float; pin; size 1300 700; center] nautilus'",
+        "on-click-right": "hyprctl dispatch exec '[float; pin; size 1300 700; center] ghostty -e lf'",
         "tooltip" : false
     },
 
