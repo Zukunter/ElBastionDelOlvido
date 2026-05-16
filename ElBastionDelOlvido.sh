@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # miss install with error
-set -euo pipefail
+#set -euo pipefail
 
 # add eric's repo for zen-browser
 sudo zypper ar -f https://download.opensuse.org/repositories/home:/ericfrs/openSUSE_Tumbleweed/ EricfrsRepo
