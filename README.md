@@ -20,6 +20,6 @@
 </p>
 
 <ul>
-    <li>Distro | OpenSuse Tumbleweed : https://neovim.io/</li>
-    <li>Code Editor : <a href="https://neovim.io/">Neovim/</a></li>
+    <li>Distro : <a href="https://www.opensuse.org/">OpenSuse Tumbleweed</a></li>
+    <li>Code Editor : <a href="https://neovim.io/">Neovim</a></li>
 </ul>
