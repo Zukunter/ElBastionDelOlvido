@@ -112,6 +112,9 @@ sudo curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stabl
 sudo usermod -aG input $USER
 sudo usermod -aG audio $USER
 sudo usermod -aG docker $USER
+sudo usermod -aG video $USER
+sudo usermod -aG network $USER
+
 sudo chsh -s $(which zsh) $USER
 sudo timedatectl set-local-rtc 0
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
