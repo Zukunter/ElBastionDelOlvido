@@ -18,3 +18,8 @@
  <a href="https://www.opensuse.org/" style="text-decoration: none;">OpenSuse Tumbleweed</a> 
  system. 
 </p>
+
+<ul>
+    <li>Distro | OpenSuse Tumbleweed : https://neovim.io/</li>
+    <li>Code Editor : <a href="https://neovim.io/">Neovim/</a></li>
+</ul>
