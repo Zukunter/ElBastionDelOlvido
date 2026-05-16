@@ -13,18 +13,21 @@ sudo zypper al 'yast2-*'
 # refresh
 sudo zypper ref
 
+# Update distro
+sudo zypper -y dup
+
 # install by zypper
 sudo zypper in -y neovim lf git curl unzip zsh hyprland hyprshot hyprsunset \
     awww rust clang zig nasm wtype ydotool zen-browser firewalld \
     pipewire pipewire-pulseaudio pipewire-alsa wireplumber \
-    ghostty waybar mako fuzzel mpv docker steam btop fastfetch whatsapp-for-linux \
+    ghostty waybar mako fuzzel mpv docker steam btop whatsapp-for-linux \
     eza flatpak fzf ripgrep make pamixer playerctl python315 zoxide bat \
     hyprpolkitagent gnome-disk-utility nautilus xdg-desktop-portal-hyprland bluetui 
 
 # install by cargo
 cargo install starship --locked --force
 cargo install sccache --locked --force
-cargo install treesiter-cli --locked --force
+cargo install tree-sitter-cli --locked --force
 
 # install by flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -79,18 +82,20 @@ fc-cache -fv
 rm -rf $HOME/Temporal
 
 # set os's files
+
 # set ZshEnv
 curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/.OsFiles/ZshEnv.zsh -o $HOME/.zshenv
 
 # set resolv
 sudo chattr -i /etc/resolv.conf
-sudo rm -rf /etc/resolv.conf
-sudo curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/.OsFiles/Resolv.toml -o /etc/resolv.conf
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
+echo "nameserver 1.1.1.1" | sudo tee -a /etc/resolv.conf
+echo "nameserver 9.9.9.9" | sudo tee -a /etc/resolv.conf
 sudo chattr +i /etc/resolv.conf
 
 # set zypper
 sudo chattr -i /etc/zypp/zypper.conf
-sudo rm -rf /etc/resolv.conf
+sudo rm -rf /etc/zypp/zypper.conf
 sudo curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/.OsFiles/Zypper.toml -o /etc/zypp/zypper.conf
 
 # set snapper confg
@@ -113,17 +118,15 @@ gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # services
 sudo systemctl enable docker
-systemctl enable --now hyprpolkitagent.service
+sudo systemctl enable --now hyprpolkitagent.service
 sudo systemctl enable --now firewalld
 sudo firewall-cmd --zone=trusted --add-interface=docker0 --permanent
 sudo systemctl enable --now snapper-cleanup.timer
 sudo systemctl disable --now snapper-timeline.timer
-systemctl enable --now pipewire.{service,socket}
-systemctl enable --now pipewire-pulse.{service,socket}
-systemctl enable --now wireplumber.service
-
+sudo systemctl enable --now pipewire.{service,socket}
+sudo systemctl enable --now pipewire-pulse.{service,socket}
+sudo systemctl enable --now wireplumber.service
 
 # enders
-sudo zypper -y dup
 sudo zypper clean -a
 systemctl reboot
