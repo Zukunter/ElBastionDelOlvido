@@ -30,7 +30,7 @@ cargo install tree-sitter-cli --force
 
 # install by flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install -y com.spotify.Client
+sudo flatpak install -y com.spotify.Client
 # flatpak install -y flathub org.vinegarhq.Sober
 
 # make the fixed directorys
@@ -48,12 +48,14 @@ mkdir -p $HOME/User/Workspace/ZigLib
 git clone -b Stable https://github.com/Zukunter/Nexus.git ~/User/Workspace/Nexus
 git clone -b Stable https://github.com/Zukunter/ZtdRust.git ~/User/Workspace/RustLib/ztd
 git clone -b Stable https://github.com/Zukunter/ZtdZig.git ~/User/Workspace/ZigLib/ztd
+
 cargo install --path $HOME/User/Workspace/Nexus
-# nexus -i $HOME/User/ElBastionDelOlvido/Neovim/Init.lua -o $HOME/User/Fixed/Configurations/nvim/init.lua -r true -p -- -c 1000
+
+nexus -i $HOME/User/ElBastionDelOlvido/Neovim/Init.lua -o $HOME/User/Fixed/Configurations/nvim/init.lua -r true -p -- -c 1000
 
 # copy ElBastionDelOlvido repo
 git clone -b Stable https://github.com/Zukunter/ElBastionDelOlvido.git ~/User/ElBastionDelOlvido
-chmod +x $HOME/User/ElBastionDelOlvido/**/*.sh
+#chmod +x $HOME/User/ElBastionDelOlvido/**/*.sh
 
 # copy antidote repo so able to use it in zsh, delete it if exists
 rm -r ~/User/ElBastionDelOlvido/Zsh/Plugins/antidote
