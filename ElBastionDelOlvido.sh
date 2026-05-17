@@ -138,16 +138,18 @@ gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # disable
 sudo systemctl disable --now snapper-timeline.timer
-sudo firewall-cmd --zone=trusted --add-interface=docker0 --permanent
+
 
 # enable
 sudo systemctl enable apparmor
-sudo systemctl enable docker
-sudo systemctl enable firewalld
+sudo systemctl enable --user --now docker
+sudo systemctl enable --now firewalld
 sudo systemctl enable snapper-cleanup.timer
-sudo systemctl enable pipewire.{service,socket}
-sudo systemctl enable pipewire-pulse.{service,socket}
-sudo systemctl enable wireplumber.service
+sudo systemctl enable --user pipewire.socket
+sudo systemctl enable --user pipewire-pulse.socket
+sudo systemctl enable --user wireplumber.service
+
+sudo firewall-cmd --zone=trusted --add-interface=docker0 --permanent
 
 # Update distro
 # sudo zypper -y dup
