@@ -1,6 +1,6 @@
 [main]
 # Ajustamos el tamaño de la fuente para que las letras sean grandes
-font=FiraCode Nerd Font SemBd:weight=bold:size=20
+font=JetBrainsMono Nerd Font:weight=bold:size=20
 prompt="   "
 # Ajustamos el tamaño de los iconos
 icon-theme=hicolor

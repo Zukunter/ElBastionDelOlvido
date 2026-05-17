@@ -15,12 +15,14 @@ sudo zypper ref
 
 # install by zypper
 sudo zypper in -y neovim lf git curl unzip zsh hyprland hyprshot hyprsunset \
-    awww rust clang zig nasm wtype ydotool zen-browser firewalld \
+    awww rustup clang zig nasm wtype ydotool zen-browser firewalld \
     pipewire pipewire-pulseaudio pipewire-alsa wireplumber libopenssl-devel pkg-config\
     ghostty waybar mako fuzzel mpv docker steam btop whatsapp-for-linux \
     eza flatpak fzf ripgrep make pamixer playerctl python315 zoxide bat \
     gnome-disk-utility nautilus xdg-desktop-portal-hyprland bluetui 
 
+# set cargo
+rustup default stable
 # install by cargo
 cargo install starship --locked --force
 cargo install sccache --force
@@ -28,7 +30,7 @@ cargo install tree-sitter-cli --force
 
 # install by flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install com.spotify.Client
+flatpak install -y com.spotify.Client
 # flatpak install -y flathub org.vinegarhq.Sober
 
 # make the fixed directorys
@@ -64,7 +66,12 @@ echo "config-file = $HOME/User/ElBastionDelOlvido/Ghostty.toml" > "$Ghostty/conf
 Hyprland=$HOME/User/Fixed/Configurations/hypr
 mkdir "$Hyprland"
 touch "$Hyprland/hyprland.conf"
-echo "source = $HOME/User/ElBastionDelOlvido/Desktop/Hyprland/Start.conf" > "$Hyprland/hyprland.conf"
+echo "source $HOME/User/ElBastionDelOlvido/Desktop/Hyprland/Start.conf" > "$Hyprland/hyprland.conf"
+
+Lf=$HOME/User/Fixed/Configurations/lf
+mkdir "$Lf"
+touch "$Lf/lfrc"
+echo "source $HOME/User/ElBastionDelOlvido/Lf/Start.zsh" > "$Lf/lfrc"
 
 # make temporal dir
 mkdir -p $HOME/.local/share/fonts
@@ -94,6 +101,10 @@ sudo chattr +i /etc/resolv.conf
 sudo chattr -i /etc/zypp/zypper.conf
 sudo rm -rf /etc/zypp/zypper.conf
 sudo curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/.OsFiles/Zypper.toml -o /etc/zypp/zypper.conf
+
+# set whatsapp 
+mkdir $HOME/User/Fixed/Configurations/whatsapp-for-linux
+curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/.OsFiles/Whatsapp.toml -o $HOME/User/Fixed/Configurations/whatsapp-for-linux/settings.conf
 
 # set snapper confg
 sudo chattr -i /etc/snapper/configs/root
@@ -141,7 +152,6 @@ sudo systemctl enable pipewire-pulse.{service,socket}
 sudo systemctl enable wireplumber.service
 
 # Update distro
-sudo zypper -y dup
-sudo zypper clean -a
-
+# sudo zypper -y dup
+# sudo zypper clean -a
 echo "Bienvenido al El Bastion Del Olvido."
