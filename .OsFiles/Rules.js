@@ -1,4 +1,3 @@
-// Permitir montar y desmontar sistemas de archivos sin sudo
 polkit.addRule(function(action, subject) {
     if ((action.id == "org.freedesktop.udisks2.filesystem-mount" ||
          action.id == "org.freedesktop.udisks2.filesystem-unmount-others") &&
@@ -7,7 +6,6 @@ polkit.addRule(function(action, subject) {
     }
 });
 
-// Permitir abrir NetworkManager TUI (nmtui) sin sudo
 polkit.addRule(function(action, subject) {
     if ((action.id == "org.freedesktop.NetworkManager.settings.modify.system" ||
          action.id == "org.freedesktop.NetworkManager.enable-disable-wifi" ||

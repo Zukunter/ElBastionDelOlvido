@@ -13,21 +13,18 @@ sudo zypper al 'yast2-*'
 # refresh
 sudo zypper ref
 
-# Update distro
-sudo zypper -y dup
-
 # install by zypper
 sudo zypper in -y neovim lf git curl unzip zsh hyprland hyprshot hyprsunset \
     awww rust clang zig nasm wtype ydotool zen-browser firewalld \
-    pipewire pipewire-pulseaudio pipewire-alsa wireplumber \
+    pipewire pipewire-pulseaudio pipewire-alsa wireplumber libopenssl-devel pkg-config\
     ghostty waybar mako fuzzel mpv docker steam btop whatsapp-for-linux \
     eza flatpak fzf ripgrep make pamixer playerctl python315 zoxide bat \
     gnome-disk-utility nautilus xdg-desktop-portal-hyprland bluetui 
 
 # install by cargo
 cargo install starship --locked --force
-cargo install sccache --locked --force
-cargo install tree-sitter-cli --locked --force
+cargo install sccache --force
+cargo install tree-sitter-cli --force
 
 # install by flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -108,27 +105,43 @@ sudo chattr -i /etc/systemd/system/snapper-cleanup.timer
 sudo rm -rf /etc/systemd/system/snapper-cleanup.timer
 sudo curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/.OsFiles/SnapperService.toml -o /etc/systemd/system/snapper-cleanup.timer
 
+# set docker
+sudo chattr -i /etc/docker/daemon.json
+sudo rm -rf /etc/docker/daemon.json
+sudo curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/.OsFiles/Docker.json -o /etc/docker/daemon.json
+
+# set Rules
+sudo curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/.OsFiles/Rules.js -o /etc/polkit-1/rules.d/10-Custom.rules
+
 # add user
 sudo usermod -aG input $USER
 sudo usermod -aG audio $USER
 sudo usermod -aG docker $USER
 sudo usermod -aG video $USER
-sudo usermod -aG network $USER
+sudo usermod -aG wheel $USER
+
 
 sudo chsh -s $(which zsh) $USER
 sudo timedatectl set-local-rtc 0
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # services
-sudo systemctl enable docker
-sudo systemctl enable --now firewalld
-sudo firewall-cmd --zone=trusted --add-interface=docker0 --permanent
-sudo systemctl enable --now snapper-cleanup.timer
-sudo systemctl disable --now snapper-timeline.timer
-sudo systemctl enable --now pipewire.{service,socket}
-sudo systemctl enable --now pipewire-pulse.{service,socket}
-sudo systemctl enable --now wireplumber.service
 
-# enders
+# disable
+sudo systemctl disable --now snapper-timeline.timer
+sudo firewall-cmd --zone=trusted --add-interface=docker0 --permanent
+
+# enable
+sudo systemctl enable apparmor
+sudo systemctl enable docker
+sudo systemctl enable firewalld
+sudo systemctl enable snapper-cleanup.timer
+sudo systemctl enable pipewire.{service,socket}
+sudo systemctl enable pipewire-pulse.{service,socket}
+sudo systemctl enable wireplumber.service
+
+# Update distro
+sudo zypper -y dup
 sudo zypper clean -a
-systemctl reboot
+
+echo "Bienvenido al El Bastion Del Olvido."

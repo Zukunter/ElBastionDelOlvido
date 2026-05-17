@@ -21,5 +21,3 @@ require("lazy").setup({
 --nexus -i ./Maps 
 --nexus -i ./Configuration 
 --nexus -i ./StartUp 
-
---nexus -e luajit init.lua _

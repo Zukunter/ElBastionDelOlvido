@@ -25,7 +25,7 @@ anchor=top-right
 on-notify=exec ~/User/ElBastionDelOlvido/Desktop/Sources/Scripts/PlayFolder.sh 0
 default-timeout=3500
 sort=-time
-max-visible=5
+max-visible=3
 [app-name=System]
 # Fonts and Text
 font=JetBrainsMono Nerd Font 16
