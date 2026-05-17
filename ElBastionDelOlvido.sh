@@ -102,10 +102,6 @@ sudo chattr -i /etc/zypp/zypper.conf
 sudo rm -rf /etc/zypp/zypper.conf
 sudo curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/.OsFiles/Zypper.toml -o /etc/zypp/zypper.conf
 
-# set whatsapp 
-mkdir $HOME/User/Fixed/Configurations/whatsapp-for-linux
-curl -L https://raw.githubusercontent.com/Zukunter/ElBastionDelOlvido/Stable/.OsFiles/Whatsapp.toml -o $HOME/User/Fixed/Configurations/whatsapp-for-linux/settings.conf
-
 # set snapper confg
 sudo chattr -i /etc/snapper/configs/root
 sudo rm -rf /etc/snapper/configs/root
