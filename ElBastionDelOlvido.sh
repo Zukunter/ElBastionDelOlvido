@@ -48,6 +48,8 @@ mkdir -p $HOME/User/Workspace/ZigLib
 git clone -b Stable https://github.com/Zukunter/Nexus.git ~/User/Workspace/Nexus
 git clone -b Stable https://github.com/Zukunter/ZtdRust.git ~/User/Workspace/RustLib/ztd
 git clone -b Stable https://github.com/Zukunter/ZtdZig.git ~/User/Workspace/ZigLib/ztd
+cargo install --path $HOME/User/Workspace/Nexus
+nexus -i $HOME/User/ElBastionDelOlvido/Neovim/Init.lua -o $HOME/User/Fixed/Configurations/nvim/init.lua -r true -p -- -c 1000
 
 # copy ElBastionDelOlvido repo
 git clone -b Stable https://github.com/Zukunter/ElBastionDelOlvido.git ~/User/ElBastionDelOlvido
