@@ -28,7 +28,7 @@ cargo install tree-sitter-cli --force
 
 # install by flatpak
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install -y flathub com.spotify.Client
+flatpak install com.spotify.Client
 # flatpak install -y flathub org.vinegarhq.Sober
 
 # make the fixed directorys
