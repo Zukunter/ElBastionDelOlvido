@@ -27,12 +27,12 @@
 
       -- Mappings
       opts.mappings = {
-        goto_next = "nex",
-        goto_prev = "prv",
-        around_next = "arnex",
-        inside_next = "innex",
-        around_last = "arprv",
-        inside_last = "inprv",
+        goto_next = "fg",
+        goto_prev = "fd",
+        around_next = "fv",
+        inside_next = "fb",
+        around_last = "fc",
+        inside_last = "fx",
       }
 
       return opts

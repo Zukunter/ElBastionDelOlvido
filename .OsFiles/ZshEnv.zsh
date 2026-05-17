@@ -1,4 +1,5 @@
 export ElBastionDelOlvido="$HOME/User/ElBastionDelOlvido"
+export DISPLAY=:0
 export Fixed="$HOME/User/Fixed"
 export Workspace="$HOME/User/Workspace"
 export XDG_CONFIG_HOME="$HOME/User/Fixed/Configurations"

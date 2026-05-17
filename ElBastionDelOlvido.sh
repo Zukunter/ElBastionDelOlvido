@@ -17,7 +17,7 @@ sudo zypper ref
 sudo zypper in -y neovim lf git curl unzip zsh hyprland hyprshot hyprsunset \
     awww rustup clang zig nasm wtype ydotool zen-browser firewalld cmake \
     pipewire pipewire-pulseaudio pipewire-alsa wireplumber libopenssl-devel pkg-config\
-    ghostty waybar mako fuzzel mpv docker steam btop whatsapp-for-linux \
+    ghostty waybar mako fuzzel mpv docker steam btop whatsapp-for-linux xwayland \
     eza flatpak fzf ripgrep make pamixer playerctl python315 zoxide bat \
     gnome-disk-utility nautilus xdg-desktop-portal-hyprland bluetui 
 
@@ -51,11 +51,9 @@ git clone -b Stable https://github.com/Zukunter/ZtdZig.git ~/User/Workspace/ZigL
 
 cargo install --path $HOME/User/Workspace/Nexus
 
-nexus -i $HOME/User/ElBastionDelOlvido/Neovim/Init.lua -o $HOME/User/Fixed/Configurations/nvim/init.lua -r true -p -- -c 1000
-
 # copy ElBastionDelOlvido repo
 git clone -b Stable https://github.com/Zukunter/ElBastionDelOlvido.git ~/User/ElBastionDelOlvido
-#chmod +x $HOME/User/ElBastionDelOlvido/**/*.sh
+chmod +x $HOME/User/ElBastionDelOlvido/**/*.sh
 
 # copy antidote repo so able to use it in zsh, delete it if exists
 rm -r ~/User/ElBastionDelOlvido/Zsh/Plugins/antidote
@@ -65,12 +63,12 @@ git clone -b main 	https://github.com/mattmc3/antidote.git ~/User/ElBastionDelOl
 Ghostty=$HOME/User/Fixed/Configurations/ghostty
 mkdir "$Ghostty"
 touch "$Ghostty/config"
-echo "config-file = $HOME/User/ElBastionDelOlvido/Ghostty.toml" > "$Ghostty/config"
+echo "config-file = $HOME/User/ElBastionDelOlvido/Ghossty/Main.toml" > "$Ghostty/config"
 
 Hyprland=$HOME/User/Fixed/Configurations/hypr
 mkdir "$Hyprland"
 touch "$Hyprland/hyprland.conf"
-echo "source $HOME/User/ElBastionDelOlvido/Desktop/Hyprland/Start.conf" > "$Hyprland/hyprland.conf"
+echo "source = $HOME/User/ElBastionDelOlvido/Desktop/Hyprland/Start.conf" > "$Hyprland/hyprland.conf"
 
 Lf=$HOME/User/Fixed/Configurations/lf
 mkdir "$Lf"
@@ -131,7 +129,7 @@ sudo usermod -aG docker $USER
 sudo usermod -aG video $USER
 sudo usermod -aG wheel $USER
 
-
+# set systems basic
 sudo chsh -s $(which zsh) $USER
 sudo timedatectl set-local-rtc 0
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
@@ -140,7 +138,9 @@ gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # disable
 sudo systemctl disable --now snapper-timeline.timer
-
+sudo systemctl disable --now auditd 
+sudo systemctl disable --now sshd
+sudo systemctl disable --now mcelog
 
 # enable
 sudo systemctl enable apparmor
@@ -154,6 +154,5 @@ sudo systemctl enable --user wireplumber.service
 sudo firewall-cmd --zone=trusted --add-interface=docker0 --permanent
 
 # Update distro
-# sudo zypper -y dup
 # sudo zypper clean -a
 echo "Bienvenido al El Bastion Del Olvido."
