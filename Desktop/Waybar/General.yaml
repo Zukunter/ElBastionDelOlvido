@@ -111,7 +111,7 @@
         "return-type": "json",
         "exec": "SSID=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d: -f2); if [ -n \"$SSID\" ]; then echo \"{\\\"text\\\": \\\"󰤨\\\", \\\"tooltip\\\": \\\"Connected to $SSID\\\", \\\"class\\\": \\\"connected\\\"}\"; else echo \"{\\\"text\\\": \\\"󰤭 \\\", \\\"tooltip\\\": \\\"Unconnected\\\", \\\"class\\\": \\\"disconnected\\\"}\"; fi",
         "interval": 15,
-        "on-click": "hyprctl dispatch exec '[float; pin; size 900 875; center] ghostty --font-size=8 -e sudo nmtui'"
+        "on-click": "hyprctl dispatch exec '[float; pin; size 900 875; center] ghostty --font-size=8 -e nmtui'"
     },
 
     "custom/arrow8": {
