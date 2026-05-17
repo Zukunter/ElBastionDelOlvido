@@ -153,6 +153,12 @@ sudo systemctl enable --user wireplumber.service
 
 sudo firewall-cmd --zone=trusted --add-interface=docker0 --permanent
 
+# remove initial files
+rm $HOME/.bashrc
+rm $HOME/.bash_history
+rm $HOME/.emacs
+rm $HOME/.profile
+rm $HOME/.inputrc
 # Update distro
 # sudo zypper clean -a
 echo "Bienvenido al El Bastion Del Olvido."
