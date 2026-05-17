@@ -15,7 +15,7 @@ sudo zypper ref
 
 # install by zypper
 sudo zypper in -y neovim lf git curl unzip zsh hyprland hyprshot hyprsunset \
-    awww rustup clang zig nasm wtype ydotool zen-browser firewalld \
+    awww rustup clang zig nasm wtype ydotool zen-browser firewalld cmake \
     pipewire pipewire-pulseaudio pipewire-alsa wireplumber libopenssl-devel pkg-config\
     ghostty waybar mako fuzzel mpv docker steam btop whatsapp-for-linux \
     eza flatpak fzf ripgrep make pamixer playerctl python315 zoxide bat \
@@ -144,7 +144,7 @@ sudo systemctl disable --now snapper-timeline.timer
 
 # enable
 sudo systemctl enable apparmor
-sudo systemctl enable --user --now docker
+sudo systemctl enable --user --now docker.service
 sudo systemctl enable --now firewalld
 sudo systemctl enable snapper-cleanup.timer
 sudo systemctl enable --user pipewire.socket
