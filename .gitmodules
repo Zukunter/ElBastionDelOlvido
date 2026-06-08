@@ -1,3 +1,6 @@
 [submodule "Zsh/Plugins/antidote"]
 	path = Zsh/Plugins/antidote
-	url = https://github.com/mattmc3/antidote
+    url = https://github.com/mattmc3/antidote
+[submodule ".OsFiles/Zukunter"]
+	path =  .OsFiles/Zukunter
+	url = https://github.com/Zukunter/Zukunter

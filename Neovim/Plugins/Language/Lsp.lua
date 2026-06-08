@@ -165,7 +165,6 @@
 			"taplo",
 			"prettier",
 			"xmlformatter",
-			"csharpier",
 		}
 
 		require("mason-lspconfig").setup({

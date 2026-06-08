@@ -14,8 +14,8 @@ map p toggle
 map o unselect
 map l invert
 
-
-map W $bat --paging=always "$f"
+map W $less "$f"
+map 2 $bat --paging=always "$f"
 map e $$SHELL
 map q quit
 map S set hidden!

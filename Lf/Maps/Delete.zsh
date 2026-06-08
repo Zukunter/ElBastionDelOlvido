@@ -1,17 +1,17 @@
 cmd delete-safe ${{
-    # Zählt die ausgewählten Dateien / Counts selected files
-    count=$(echo "$fx" | wc -w)
-    
-    # Fragt nach Bestätigung / Asks for confirmation
+    count=$(printf "%s\n" $fx | wc -l)
+
     printf "Delete $count item(s)? [a/n]: "
     read res
-    
+
     if [ "$res" = "a" ] || [ "$res" = "A" ]; then
-        # Nutze 'rm -rf' (Vorsicht!) oder besser 'trash'
-        # Use 'rm -rf' (Caution!) or preferably 'trash'
-        rm -rf $fx
-        
-        # UI aktualisieren / Refresh UI
+        # Recorre cada archivo de forma segura
+        while IFS= read -r f; do
+            rm -rf -- "$f"
+        done <<EOF
+$fx
+EOF
+
         lf -remote "send $id reload"
         echo "Deleted."
     else

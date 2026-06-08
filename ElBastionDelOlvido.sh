@@ -15,11 +15,11 @@ sudo zypper ref
 
 # install by zypper
 sudo zypper in -y neovim lf git curl unzip zsh hyprland hyprshot hyprsunset \
-    awww rustup clang zig nasm wtype ydotool zen-browser firewalld cmake \
+    awww rustup clang zig nasm wtype ydotool zen-browser firewalld cmake npm \
     pipewire pipewire-pulseaudio pipewire-alsa wireplumber libopenssl-devel pkg-config\
     ghostty waybar mako fuzzel mpv docker steam btop whatsapp-for-linux xwayland \
     eza flatpak fzf ripgrep make pamixer playerctl python315 zoxide bat \
-    gnome-disk-utility nautilus xdg-desktop-portal-hyprland bluetui 
+    gnome-disk-utility nautilus xdg-desktop-portal-hyprland bluetui obsidian
 
 # set cargo
 rustup default stable

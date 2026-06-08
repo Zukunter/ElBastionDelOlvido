@@ -12,7 +12,6 @@
 			zig = { "zigfmt" },
 
 			c = { "clang-format" },
-			cs = { "csharpier" },
 			java = { "google-java-format" },
 
 			cpp = { "clang-format" },

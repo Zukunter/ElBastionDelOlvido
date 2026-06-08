@@ -3,4 +3,4 @@ export CC="sccache clang"
 export CXX="sccache clang++"
 export CMAKE_C_COMPILER_LAUNCHER=sccache
 export CMAKE_CXX_COMPILER_LAUNCHER=sccache
-export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.co2/bin:$HOME/.local/bin:$PATH"
